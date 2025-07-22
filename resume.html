@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Peter Njenga Kihoro - Professional Resume">
+  <title>Resume | Peter Profile</title>
+  <style>
+    /* CSS Variables for easy theming - Matching about.html */
+    :root {
+      --primary-gradient: linear-gradient(to right, #00c6ff, #0072ff);
+      --primary-gradient-hover: linear-gradient(to right, #0072ff, #00c6ff);
+      --primary-color: #0006b1;
+      --text-light: #f0f0f0;
+      --text-dark: #000;
+      --text-muted: #6c757d;
+      --bg-light: #f8f9fa;
+      --bg-dark: #343a40;
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      --transition: all 0.3s ease-in-out;
+      --active-color: #0006b1;
+      --border-radius: 8px;
+    }
+
+    /* Base Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Typography */
+    html {
+      font-size: 16px;
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      color: var(--text-dark);
+      background-color: #f8f9fa;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    /* Header Styles - Matching about.html */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem;
+      background-color: rgba(255, 255, 255, 0.95);
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      height: 2.5rem;
+      width: auto;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    /* Navigation - Matching about.html */
+    nav {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    nav a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      position: relative;
+      padding-bottom: 0.25rem;
+      transition: var(--transition);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--text-dark);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Active navigation link */
+    nav a.active {
+      color: var(--active-color);
+    }
+
+    nav a.active::after {
+      background-color: var(--active-color);
+      width: 100%;
+    }
+
+    /* Main Content */
+    .resume-content {
+      flex: 1;
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      background-color: white;
+      box-shadow: var(--shadow);
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      border-radius: var(--border-radius);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      margin: 0.5rem auto;
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #0006b1;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* Resume Summary Section */
+    .resume-summary {
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .resume-summary h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    .resume-summary p {
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Resume Grid Layout */
+    .resume-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .resume-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Resume Card Styles */
+    .resume-card {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .resume-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .resume-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      padding-bottom: 0.75rem;
+      position: relative;
+    }
+
+    .resume-card h3::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--primary-color);
+    }
+
+    /* Resume Item Styles */
+    .resume-item {
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .resume-item::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: var(--primary-color);
+    }
+
+    .resume-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .resume-item h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .resume-item h5 {
+      font-size: 0.9rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .resume-item .date {
+      display: inline-block;
+      background: rgba(0, 6, 177, 0.1);
+      color: var(--primary-color);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .resume-item ul {
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+    }
+
+    .resume-item ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Summary Info */
+    .summary-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .info-box {
+      text-align: center;
+      min-width: 200px;
+    }
+
+    .info-box strong {
+      display: block;
+      color: var(--primary-color);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-box span {
+      color: var(--text-muted);
+    }
+
+    /* Footer Styles - Matching about.html */
+    footer {
+      background-color: rgba(255, 255, 255, 0.7);
+      color: var(--text-dark);
+      text-align: center;
+      padding: 0.4rem;
+      font-size: 0.7rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(0px);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .copyright {
+      margin-bottom: 0.5rem;
+    }
+
+    .designer {
+      font-style: italic;
+      color: #000000;
+      margin-bottom: 1rem;
+      font-size: 0.7rem;
+    }
+
+    .social-icons {
+      margin-top: 0.2rem;
+    }
+
+    .social-icons a {
+      color: var(--text-dark);
+      margin: 0 0.3rem;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .social-icons a:hover {
+      color: var(--active-color);
+      transform: translateY(-2px);
+    }
+
+    /* Responsive Design - Matching about.html */
+    @media (max-width: 992px) {
+      .resume-content {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      html {
+        font-size: 14px;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 0.8rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+      }
+
+      nav a {
+        font-size: 0.8rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .resume-summary, .resume-card {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .resume-summary {
+        padding: 1.5rem 1rem;
+      }
+
+      footer {
+        padding: 0.3rem;
+        font-size: 0.6rem;
+      }
+      
+      .social-icons a {
+        font-size: 0.8rem;
+        margin: 0 0.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- Logo with semantic heading -->
+    <div>
+      <img src="images/logo.png" alt="Peter Njenga Logo" class="logo">
+    </div>
+
+    <!-- Main Navigation with ARIA label -->
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="resume.html" class="active">Resume</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="resume-content">
+    <h1 class="section-title">Resume</h1>
+    <p class="section-subtitle">Professional Experience & Education</p>
+    
+    <section class="resume-summary">
+      <h2>Hi, I'm Peter Njenga Kihoro.</h2>
+      <p>A Computer Technologist specializing in Project Management, Social Media Management, System Administration, Android Development, Graphic Design, ICT Support, Web Programming, Routing and Networking, and FLP Music Production.</p>
+      
+      <div class="summary-info">
+        <div class="info-box">
+          <strong>Location:</strong>
+          <span>Naivasha, Kenya</span>
+        </div>
+        <div class="info-box">
+          <strong>Phone:</strong>
+          <span>(+254) 708942431</span>
+        </div>
+        <div class="info-box">
+          <strong>Email:</strong>
+          <span>Peter.njengakihoro@gmail.com</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Summary</h2>
+      
+      <div class="resume-card">
+        <h3>Professional Profile</h3>
+        <div class="resume-item">
+          <p>Innovative and deadline-driven Web Developer, Android Developer, Graphic Designer, Video Editor with 3+ years of experience designing and developing user-centered digital/print marketing systems and material from initial concept to final, polished deliverable.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="resume-grid">
+      <section>
+        <h2 class="section-title">Education</h2>
+        
+        <div class="resume-card">
+          <div class="resume-item">
+            <h4>Master of Science in Project Management & Planning</h4>
+            <div class="date">2023 - 2025</div>
+            <h5>Mount Kenya University</h5>
+            <p>Msc project management for planning and management of any type of project, be it ICT of Non-ICT.</p>
+          </div>
+          
+          <div class="resume-item">
+            <h4>Bachelor of Business Information Technology</h4>
+            <div class="date">2015 - 2019</div>
+            <h5>Meru University of Science and Technology</h5>
+            <p>Relevant Courses: Algorithms, Networking, Principles of Programming, Logic and Database Managment (DBMS), Software Engineering, Computer Systems, Web Design, System Analysis and Design, Human Computer Interaction, Programming Languages.</p>
+          </div>
+          
+          <div class="resume-item">
+            <h4>Networking (DataCom) and Cyber Security</h4>
+            <div class="date">2020 - 2021</div>
+            <h5>Huawei ICT Academy</h5>
+            <p>Enrolled for the Huawei ICT Associate certifications in the Networking and Cyber Secuirty.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Experience</h2>
+        
+        <div class="resume-card">
+          <div class="resume-item">
+            <h4>Freelance ICT Technical Consultant (Remote)</h4>
+            <div class="date">2023 - 2024</div>
+            <h5>Nakuru, Kenya</h5>
+            <ul>
+              <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
+              <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
+              <li>Oversee the efficient use of production project budgets ranging from 25,000 - 100,000</li>
+            </ul>
+          </div>
+          
+          <div class="resume-item">
+            <h4>Elections Clerk (2022)</h4>
+            <div class="date">August 2022 - August 2022</div>
+            <h5>Independent Electoral and Boundaries Commission (IEBC)</h5>
+            <ul>
+              <li>Handling of the KIEMS kit and Biometrically identifying Registered Voters.</li>
+            </ul>
+          </div>
+          
+          <div class="resume-item">
+            <h4>Data Clerk (KCSE)</h4>
+            <div class="date">Apr 2022 - May 2022</div>
+            <h5>Kenya National Examinations Council</h5>
+            <ul>
+              <li>Handling of generated Student's data (Marks) and capturing it on the national database For the KCSE, 2021.</li>
+            </ul>
+          </div>
+          
+          <div class="resume-item">
+            <h4>Presidential Digitalent Intern</h4>
+            <div class="date">Oct 2020 - Sept 2021</div>
+            <h5>ICT Authority</h5>
+            <ul>
+              <li>Assist in Implementation of the county Health Information Managment Systems at the County Government of Samburu.</li>
+            </ul>
+          </div>
+          
+          <div class="resume-item">
+            <h4>Network and Cyber Security Student</h4>
+            <div class="date">June 2021 - July 2021</div>
+            <h5>Huawei ICT Academy</h5>
+            <ul>
+              <li>Enrolled for the Huawei ICT Associate certifications in the Networking and Cyber Secuirty.</li>
+            </ul>
+          </div>
+          
+          <div class="resume-item">
+            <h4>Data clerk (KCSE)</h4>
+            <div class="date">May 2021 - May 2021</div>
+            <h5>Kenya National Examinations Council</h5>
+            <ul>
+              <li>Handling of generated Student's data (Marks) and capturing it on the national database for the KCSE, 2020.</li>
+            </ul>
+          </div>
+          
+          <div class="resume-item">
+            <h4>ICT Volunteer</h4>
+            <div class="date">Sept 2021 - January 2022</div>
+            <h5>Samburu County Refferal Hospital (Assistant ICT Officer)</h5>
+            <ul>
+              <li>System Administration, Configuration, installation and maintenance hospital information management systems</li>
+              <li>Software installations majorly desktop applications</li>
+              <li>Server management and maintenance</li>
+              <li>User support</li>
+              <li>Networking (configurations and maintenance)</li>
+            </ul>
+          </div>
+          
+          <div class="resume-item">
+            <h4>ICT Intern</h4>
+            <div class="date">October 2020 - Sept 2021</div>
+            <h5>Intern County Government of Samburu</h5>
+            <ul>
+              <li>Configuration, installation and maintenance of VOIP</li>
+              <li>Software installations majorly desktop applications</li>
+              <li>User support</li>
+              <li>System Administration Networking(Troubleshooting network errors and configurations)</li>
+              <li>Server management and maintenance</li>
+            </ul>
+          </div>
+          
+          <div class="resume-item">
+            <h4>ICT Attaché</h4>
+            <div class="date">May 2019 - Aug 2019</div>
+            <h5>Africa Nazarene University</h5>
+            <ul>
+              <li>User/ system support to internal and external stakeholders</li>
+              <li>Installed and configured computer hardware, operating systems and applications</li>
+              <li>Database management</li>
+              <li>Diagnosed and solved network problems</li>
+              <li>Management of Business systems</li>
+              <li>Data entry and analysis in GIS</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p class="copyright">&copy; <span id="year"></span> Peter Njenga Kihoro. All rights reserved.</p>
+      <p class="designer">Designed by Peter</p>
+      <div class="social-icons">
+        <a href="#" title="Facebook" aria-label="Facebook profile">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+          </svg>
+        </a>
+        <a href="#" title="Instagram" aria-label="Instagram profile">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+          </svg>
+        </a>
+        <a href="#" title="LinkedIn" aria-label="LinkedIn profile">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Update copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Highlight active navigation link based on current page
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('nav a').forEach(link => {
+      const linkPage = link.getAttribute('href');
+      if (currentPage === linkPage || 
+          (currentPage === '' && linkPage === 'index.html')) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+
+    // Animation for resume items when they come into view
+    document.addEventListener('DOMContentLoaded', function() {
+      const resumeItems = document.querySelectorAll('.resume-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      resumeItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        item.style.transition = 'all 0.6s ease-out';
+        observer.observe(item);
+      });
+    });
+  </script>
+
+</body>
+</html>

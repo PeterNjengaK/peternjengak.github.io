@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Peter Njenga Kihoro - Professional Profile">
+  <title>About | Peter Profile</title>
+  <style>
+    /* CSS Variables for easy theming */
+    :root {
+      --primary-gradient: linear-gradient(to right, #00c6ff, #0072ff);
+      --primary-gradient-hover: linear-gradient(to right, #0072ff, #00c6ff);
+      --primary-color: #0006b1;
+      --text-light: #f0f0f0;
+      --text-dark: #000;
+      --text-muted: #6c757d;
+      --bg-light: #f8f9fa;
+      --bg-dark: #343a40;
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      --transition: all 0.3s ease-in-out;
+      --active-color: #0006b1;
+      --border-radius: 8px;
+    }
+
+    /* Base Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Typography */
+    html {
+      font-size: 16px;
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      color: var(--text-dark);
+      background-color: #f8f9fa;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    /* Header Styles - Matching index.html */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem;
+      background-color: rgba(255, 255, 255, 0.95);
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      height: 2.5rem;
+      width: auto;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    /* Navigation - Matching index.html */
+    nav {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    nav a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      position: relative;
+      padding-bottom: 0.25rem;
+      transition: var(--transition);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--text-dark);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Active navigation link */
+    nav a.active {
+      color: var(--active-color);
+    }
+
+    nav a.active::after {
+      background-color: var(--active-color);
+      width: 100%;
+    }
+
+    /* Main Content */
+    .about-content {
+      flex: 1;
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      background-color: white;
+      box-shadow: var(--shadow);
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      border-radius: var(--border-radius);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      margin: 0.5rem auto;
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #0006b1;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    .about-intro {
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .about-intro h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    .about-intro p {
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .profile-card {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      padding-bottom: 0.75rem;
+    }
+
+    .info-item {
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .info-item strong {
+      min-width: 100px;
+      display: inline-block;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .info-item span {
+      color: var(--text-muted);
+    }
+
+    .skills-container {
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .skill-item {
+      margin-bottom: 1.75rem;
+    }
+
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .skill-bar {
+      height: 10px;
+      background: #e9ecef;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: var(--primary-color);
+      border-radius: 5px;
+      transition: width 1s ease-in-out;
+    }
+
+    .facts-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .fact-box {
+      text-align: center;
+      background: white;
+      padding: 2rem 1.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .fact-box:hover {
+      transform: translateY(-5px);
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .fact-box:hover .fact-number,
+    .fact-box:hover .fact-text {
+      color: white;
+    }
+
+    .fact-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+      transition: var(--transition);
+    }
+
+    .fact-text {
+      font-size: 1rem;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .testimonials-container {
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonial {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-light);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      border: 3px solid var(--primary-color);
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+      flex-grow: 1;
+      position: relative;
+      padding: 0 1rem;
+    }
+
+    .testimonial-text::before,
+    .testimonial-text::after {
+      content: '"';
+      font-size: 2rem;
+      color: var(--primary-color);
+      opacity: 0.3;
+      position: absolute;
+    }
+
+    .testimonial-text::before {
+      top: -1rem;
+      left: 0;
+    }
+
+    .testimonial-text::after {
+      bottom: -2rem;
+      right: 0;
+    }
+
+    .testimonial-author {
+      font-weight: bold;
+      color: var(--primary-color);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .testimonial-role {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Footer Styles - Matching index.html */
+    footer {
+      background-color: rgba(255, 255, 255, 0.7);
+      color: var(--text-dark);
+      text-align: center;
+      padding: 0.4rem;
+      font-size: 0.7rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(0px);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .copyright {
+      margin-bottom: 0.5rem;
+    }
+
+    .designer {
+      font-style: italic;
+      color: #000000;
+      margin-bottom: 1rem;
+      font-size: 0.7rem;
+    }
+
+    .social-icons {
+      margin-top: 0.2rem;
+    }
+
+    .social-icons a {
+      color: var(--text-dark);
+      margin: 0 0.3rem;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .social-icons a:hover {
+      color: var(--active-color);
+      transform: translateY(-2px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .about-content {
+        padding: 2rem 1.5rem;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      html {
+        font-size: 14px;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 0.8rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+      }
+
+      nav a {
+        font-size: 0.8rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .about-intro, .profile-card, .skills-container, .testimonials-container {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .facts-container {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-intro {
+        padding: 1.5rem 1rem;
+      }
+
+      footer {
+        padding: 0.3rem;
+        font-size: 0.6rem;
+      }
+      
+      .social-icons a {
+        font-size: 0.8rem;
+        margin: 0 0.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- Logo with semantic heading -->
+    <div>
+      <img src="images/logo.png" alt="Peter Njenga Logo" class="logo">
+    </div>
+
+    <!-- Main Navigation with ARIA label -->
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="resume.html">Resume</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="about-content">
+    <h1 class="section-title">About Me</h1>
+    <p class="section-subtitle">Professional Profile & Skills Overview</p>
+    
+    <section class="about-intro">
+      <h2>Hi, below is some general information about me.</h2>
+      <p>Project manager, Web Developer, Graphic Designer, Video Editor, Music Producer, Social Media Manager, Writer & Android Developer</p>
+      <p>My academic qualifications are as highlighted below;</p>
+    </section>
+
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h3>Personal Info</h3>
+        <div class="info-item">
+          <strong>Birthday:</strong>
+          <span>27 May 1995</span>
+        </div>
+        <div class="info-item">
+          <strong>Website:</strong>
+          <span>https://peternjengak.github.io/</span>
+        </div>
+        <div class="info-item">
+          <strong>Phone:</strong>
+          <span>+254 708942431</span>
+        </div>
+        <div class="info-item">
+          <strong>City:</strong>
+          <span>Nakuru, Kenya</span>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <h3>Professional Info</h3>
+        <div class="info-item">
+          <strong>Age:</strong>
+          <span>30</span>
+        </div>
+        <div class="info-item">
+          <strong>Degree:</strong>
+          <span>Masters</span>
+        </div>
+        <div class="info-item">
+          <strong>Email:</strong>
+          <span>peter.njengakihoro@gmail.com</span>
+        </div>
+        <div class="info-item">
+          <strong>Freelance:</strong>
+          <span>Available</span>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <h3>About Me</h3>
+        <p>I provide the best level of services relating to computing. My Major Interest Is Growing To Be A Team Work Led World-Class ICT Specialist.</p>
+      </div>
+    </div>
+
+    <section class="skills-container">
+      <h2 class="section-title">My Skills</h2>
+      <p class="section-subtitle">Below are my skillset areas</p>
+      
+      <div class="skill-item">
+        <div class="skill-name">
+          <span>HTML</span>
+          <span>100%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 100%;"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">
+          <span>CSS</span>
+          <span>85%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 85%;"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">
+          <span>JavaScript</span>
+          <span>70%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 70%;"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">
+          <span>Java</span>
+          <span>90%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 90%;"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">
+          <span>Kotlin</span>
+          <span>95%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 95%;"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">
+          <span>PHP</span>
+          <span>68%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 68%;"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">
+          <span>React/React Native</span>
+          <span>80%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 80%;"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">
+          <span>Adobe Photoshop</span>
+          <span>95%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 95%;"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">
+          <span>Adobe Premiere Pro</span>
+          <span>90%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 90%;"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">
+          <span>FL Studio</span>
+          <span>80%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 80%;"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-name">
+          <span>CapCut</span>
+          <span>95%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 95%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-name">
+          <span>OBS LiveStreaming</span>
+          <span>90%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 90%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Professional Facts</h2>
+      <p class="section-subtitle">My engagement levels and achievements</p>
+      
+      <div class="facts-container">
+        <div class="fact-box">
+          <div class="fact-number">123</div>
+          <div class="fact-text">Clients</div>
+        </div>
+        
+        <div class="fact-box">
+          <div class="fact-number">28</div>
+          <div class="fact-text">Projects</div>
+        </div>
+        
+        <div class="fact-box">
+          <div class="fact-number">1453</div>
+          <div class="fact-text">Hours Of Support</div>
+        </div>
+        
+        <div class="fact-box">
+          <div class="fact-number">5</div>
+          <div class="fact-text">Team Members</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials-container">
+      <h2 class="section-title">Client Testimonials</h2>
+      <p class="section-subtitle">What my clients say about my work</p>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <img src="images/testimonials-2.png" alt="Rev. John Kamau" class="testimonial-img">
+          <p class="testimonial-text">Peter is a very committed individual who serves us well as the head of our Church's media department. He is vastly knowledgeable in matters livestreaming and graphic design. And he continues to serve us quite exemprarily.</p>
+          <div class="testimonial-author">Rev. John Kamau</div>
+          <div class="testimonial-role">VWO-Karati - Reverend Pastor</div>
+        </div>
+        
+        <div class="testimonial">
+          <img src="images/testimonials-1.jpg" alt="Mercy Kiragu" class="testimonial-img">
+          <p class="testimonial-text">Peter is really good at what he does. He is what i call very close to a computer genius. He literally knows evey soft and hard skill there is.</p>
+          <div class="testimonial-author">Mercy Kiragu</div>
+          <div class="testimonial-role">Trainee & Mentee</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p class="copyright">&copy; <span id="year"></span> Peter Njenga Kihoro. All rights reserved.</p>
+      <p class="designer">Designed by Peter</p>
+      <div class="social-icons">
+        <a href="#" title="Facebook" aria-label="Facebook profile">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+          </svg>
+        </a>
+        <a href="#" title="Instagram" aria-label="Instagram profile">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+          </svg>
+        </a>
+        <a href="#" title="LinkedIn" aria-label="LinkedIn profile">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Update copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Highlight active navigation link based on current page
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('nav a').forEach(link => {
+      const linkPage = link.getAttribute('href');
+      if (currentPage === linkPage || 
+          (currentPage === '' && linkPage === 'index.html')) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+
+    // Animation for skill bars
+    document.addEventListener('DOMContentLoaded', function() {
+      const skillBars = document.querySelectorAll('.skill-progress');
+      skillBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => {
+          bar.style.width = width;
+        }, 100);
+      });
+
+      // Animate fact boxes when they come into view
+      const factBoxes = document.querySelectorAll('.fact-box');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      factBoxes.forEach(box => {
+        box.style.opacity = '0';
+        box.style.transform = 'translateY(20px)';
+        box.style.transition = 'all 0.6s ease-out';
+        observer.observe(box);
+      });
+    });
+  </script>
+
+</body>
+</html>
