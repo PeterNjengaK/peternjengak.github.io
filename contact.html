@@ -440,6 +440,23 @@
       }
     }
 
+    @media (max-width: 390px) {
+      body { overflow-x: hidden; }
+      .container { padding: 0 1rem; }
+      header { padding: 0.75rem 0; }
+      .logo { height: 2rem; }
+      nav { top: 4rem; }
+      .contact-hero { padding: 6rem 0 3rem; }
+      .section-title { font-size: 1.65rem; }
+      .section-subtitle { font-size: 0.95rem; }
+      .contact-card { padding: 1.25rem; }
+      .contact-card { min-width: 0; overflow-wrap: anywhere; }
+      .info-content, .info-content a, .form-group { min-width: 0; overflow-wrap: anywhere; }
+      .form-control { font-size: 0.95rem; }
+      .btn { width: 100%; }
+      .social-icons { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    }
+
     /* Animation */
     @keyframes fadeIn {
       from {
@@ -468,16 +485,17 @@
       animation-delay: 0.6s;
     }
   </style>
+  <link rel="stylesheet" href="profile.css?v=studio-2">
+  <script src="profile-ui.js?v=studio-2" defer></script>
 </head>
-<body>
+<body class="inner-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header>
     <div class="container header-container">
-      <div>
-        <img src="images/logo.png" alt="Peter Njenga Logo" class="logo">
-      </div>
+      <a class="wordmark" href="index.html" aria-label="Peter Njenga home"><img class="head-logo" src="images/logo.png" alt="Peter Njenga" width="40" height="40"><span class="wordmark-caption">PERSONAL PROFILE</span></a>
 
-      <button class="nav-toggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-controls="main-nav" aria-expanded="false">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -496,12 +514,12 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- Contact Hero Section -->
     <section class="contact-hero">
       <div class="container">
-        <h1 class="section-title fade-in">Contact Me</h1>
-        <p class="section-subtitle fade-in delay-1">Get in touch for any services you may require at very affordable rates</p>
+        <h1 class="section-title fade-in" data-profile-path="pageCopy.contactTitle">Contact Me</h1>
+        <p class="section-subtitle fade-in delay-1" data-profile="contactPageSubtitle">Get in touch for any services you may require at very affordable rates</p>
       </div>
     </section>
 <br>
@@ -515,7 +533,7 @@
               <div class="info-icon">📍</div>
               <div class="info-content">
                 <h4>Location</h4>
-                <p>California, USA</p>
+                <p data-profile="location">California, USA</p>
               </div>
             </div>
             
@@ -523,7 +541,7 @@
               <div class="info-icon">📞</div>
               <div class="info-content">
                 <h4>Phone</h4>
-                <p><a href="tel:+1 (707)978 6179">+1 (707)978 6179</a></p>
+                <p><a data-profile-phone href="tel:+1 (707)978 6179">+1 (707)978 6179</a></p>
               </div>
             </div>
             
@@ -531,7 +549,7 @@
               <div class="info-icon">✉️</div>
               <div class="info-content">
                 <h4>Email</h4>
-                <p><a href="mailto:Peter.njengakihoro@gmail.com">Peter.njengakihoro@gmail.com</a></p>
+                <p><a data-profile-email href="mailto:Peter.njengakihoro@gmail.com">Peter.njengakihoro@gmail.com</a></p>
               </div>
             </div>
           </div>
@@ -592,10 +610,11 @@
           </svg>
         </a>
       </div>
-      <p class="copyright">&copy; <span id="year"></span> Peter Njenga Kihoro. All rights reserved.</p>
+      <p class="copyright">&copy; <span id="year"></span> <span data-profile="name">Peter Njenga Kihoro</span>. <span data-profile="footerText">All rights reserved.</span></p>
     </div>
   </footer>
 
+  <script src="dynamic-profile.js?v=studio-2"></script>
   <script>
     // Update copyright year
     document.getElementById('year').textContent = new Date().getFullYear();

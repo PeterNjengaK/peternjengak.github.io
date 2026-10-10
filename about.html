@@ -532,6 +532,25 @@
       }
     }
 
+    @media (max-width: 390px) {
+      body { overflow-x: hidden; }
+      .container { padding: 0 1rem; }
+      header { padding: 0.75rem 0; }
+      .logo { height: 2rem; }
+      nav { top: 4rem; }
+      .about-hero { padding: 6rem 0 3rem !important; }
+      .section-title { font-size: 1.65rem; }
+      .section-subtitle { font-size: 0.95rem; }
+      .about-intro, .profile-card, .skills-container, .testimonials-container { padding: 1.25rem; }
+      .profile-grid, .skills-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .profile-card { min-width: 0; overflow-wrap: anywhere; }
+      .profile-card .info-item span { min-width: 0; overflow-wrap: anywhere; }
+      .facts-container { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+      .fact-box { padding: 1rem 0.5rem; }
+      .fact-number { font-size: 1.75rem; }
+      .social-icons { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    }
+
     /* Animation */
     @keyframes fadeIn {
       from {
@@ -560,16 +579,17 @@
       animation-delay: 0.6s;
     }
   </style>
+  <link rel="stylesheet" href="profile.css?v=studio-2">
+  <script src="profile-ui.js?v=studio-2" defer></script>
 </head>
-<body>
+<body class="inner-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header>
     <div class="container header-container">
-      <div>
-        <img src="images/logo.png" alt="Peter Njenga Logo" class="logo">
-      </div>
+      <a class="wordmark" href="index.html" aria-label="Peter Njenga home"><img class="head-logo" src="images/logo.png" alt="Peter Njenga" width="40" height="40"><span class="wordmark-caption">PERSONAL PROFILE</span></a>
 
-      <button class="nav-toggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-controls="main-nav" aria-expanded="false">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -588,12 +608,12 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- About Hero Section -->
-    <section class="about-hero" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(29, 78, 216, 0.9) 100%); color: white; padding: 8rem 0 4rem;">
+    <section class="about-hero">
       <div class="container">
-        <h1 class="section-title fade-in" style="color: white;">About Me</h1>
-        <p class="section-subtitle fade-in delay-1" style="color: rgba(255,255,255,0.9);">Professional Profile & Skills Overview</p>
+        <h1 class="section-title fade-in">About Me</h1>
+        <p class="section-subtitle fade-in delay-1" data-profile="aboutPageSubtitle">Professional Profile & Skills Overview</p>
       </div>
     </section>
 <br>
@@ -601,8 +621,8 @@
     <section class="container">
       <div class="about-intro fade-in delay-2">
         <h2>Hi, below is some general information about me.</h2>
-        <p>Project manager, Web Developer, Graphic Designer, Video Editor, Music Producer, Social Media Manager, Writer & Android Developer</p>
-        <p>My academic qualifications are as highlighted below:</p>
+        <p data-profile="aboutIntro">Project manager, Web Developer, Graphic Designer, Video Editor, Music Producer, Social Media Manager, Writer & Android Developer</p>
+        <p data-profile-path="pageCopy.aboutAcademicIntro">My academic qualifications are as highlighted below:</p>
       </div>
 
       <div class="profile-grid">
@@ -610,7 +630,7 @@
           <h3>Personal Info</h3>
           <div class="info-item">
             <strong>Birthday:</strong>
-            <span>27 May 1995</span>
+            <span data-profile="birthday">27 May 1995</span>
           </div>
           <div class="info-item">
             <strong>Website:</strong>
@@ -618,11 +638,11 @@
           </div>
           <div class="info-item">
             <strong>Phone:</strong>
-            <span>+1 (707)978 6179</span>
+            <span data-profile="phone">+1 (707)978 6179</span>
           </div>
           <div class="info-item">
             <strong>City:</strong>
-            <span>California, USA</span>
+            <span data-profile="location">California, USA</span>
           </div>
         </div>
 
@@ -630,25 +650,25 @@
           <h3>Professional Info</h3>
           <div class="info-item">
             <strong>Age:</strong>
-            <span>30</span>
+            <span data-profile="age">30</span>
           </div>
           <div class="info-item">
             <strong>Degree:</strong>
-            <span>Masters</span>
+            <span data-profile="degree">Masters</span>
           </div>
           <div class="info-item">
             <strong>Email:</strong>
-            <span>peter.njengakihoro@gmail.com</span>
+            <span data-profile="email">peter.njengakihoro@gmail.com</span>
           </div>
           <div class="info-item">
             <strong>Freelance:</strong>
-            <span>Available</span>
+            <span data-profile="freelance">Available</span>
           </div>
         </div>
 
         <div class="profile-card fade-in delay-2">
           <h3>About Me</h3>
-          <p>I provide the best level of services relating to computing. My Major Interest Is Growing To Be A Team Work Led World-Class ICT Specialist.</p>
+          <p data-profile="bio">I provide the best level of services relating to computing. My Major Interest Is Growing To Be A Team Work Led World-Class ICT Specialist.</p>
         </div>
       </div>
     </section>
@@ -656,10 +676,10 @@
     <!-- Skills Section -->
     <section class="container">
       <div class="skills-container fade-in">
-        <h2 class="section-title">My Skills</h2>
-        <p class="section-subtitle">Below are my skillset areas</p>
+        <h2 class="section-title" data-profile-path="pageCopy.skillsTitle">My Skills</h2>
+        <p class="section-subtitle" data-profile-path="pageCopy.skillsSubtitle">Below are my skillset areas</p>
         
-        <div class="skills-grid">
+        <div class="skills-grid" data-dynamic-skills>
           <div>
             <div class="skill-item">
               <div class="skill-name">
@@ -789,10 +809,10 @@
 
     <!-- Facts Section -->
     <section class="container">
-      <h2 class="section-title fade-in">Professional Facts</h2>
-      <p class="section-subtitle fade-in delay-1">My engagement levels and achievements</p>
+      <h2 class="section-title fade-in" data-profile-path="pageCopy.factsTitle">Professional Facts</h2>
+      <p class="section-subtitle fade-in delay-1" data-profile-path="pageCopy.factsSubtitle">My engagement levels and achievements</p>
       
-      <div class="facts-container">
+      <div class="facts-container" data-dynamic-facts>
         <div class="fact-box fade-in">
           <div class="fact-number">123</div>
           <div class="fact-text">Clients</div>
@@ -815,29 +835,6 @@
       </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="container">
-      <div class="testimonials-container fade-in">
-        <h2 class="section-title">Client Testimonials</h2>
-        <p class="section-subtitle">What my clients say about my work</p>
-        
-        <div class="testimonials-grid">
-          <div class="testimonial">
-            <img src="images/testimonials-2.png" alt="Rev. John Kamau" class="testimonial-img">
-            <p class="testimonial-text">Peter is a very committed individual who serves us well as the head of our Church's media department. He is vastly knowledgeable in matters livestreaming and graphic design. And he continues to serve us quite exemprarily.</p>
-            <div class="testimonial-author">Rev. John Kamau</div>
-            <div class="testimonial-role">VWO-Karati - Reverend Pastor</div>
-          </div>
-          
-          <div class="testimonial">
-            <img src="images/testimonials-1.jpg" alt="Mercy Kiragu" class="testimonial-img">
-            <p class="testimonial-text">Peter is really good at what he does. He is what i call very close to a computer genius. He literally knows evey soft and hard skill there is.</p>
-            <div class="testimonial-author">Mercy Kiragu</div>
-            <div class="testimonial-role">Trainee & Mentee</div>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -865,10 +862,11 @@
           </svg>
         </a>
       </div>
-      <p class="copyright">&copy; <span id="year"></span> Peter Njenga Kihoro. All rights reserved.</p>
+      <p class="copyright">&copy; <span id="year"></span> <span data-profile="name">Peter Njenga Kihoro</span>. <span data-profile="footerText">All rights reserved.</span></p>
     </div>
   </footer>
 
+  <script src="dynamic-profile.js?v=studio-2"></script>
   <script>
     // Update copyright year
     document.getElementById('year').textContent = new Date().getFullYear();

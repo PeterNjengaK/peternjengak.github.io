@@ -446,6 +446,24 @@
         font-size: 1.8rem;
       }
 
+
+    @media (max-width: 390px) {
+      body { overflow-x: hidden; }
+      .container { padding: 0 1rem; }
+      header { padding: 0.75rem 0; }
+      .logo { height: 2rem; }
+      nav { top: 4rem; }
+      .resume-hero { padding: 6rem 0 3rem; }
+      .section-title { font-size: 1.65rem; }
+      .section-subtitle { font-size: 0.95rem; }
+      .resume-summary, .resume-card { padding: 1.25rem; }
+      .resume-grid { grid-template-columns: 1fr; }
+      .summary-info { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+      .info-box { min-width: 0; }
+      .resume-item { padding-left: 1.25rem; }
+      .resume-item h4 { font-size: 1.05rem; }
+      .social-icons { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    }
       .resume-summary {
         padding: 1.5rem;
       }
@@ -483,16 +501,17 @@
       animation-delay: 0.6s;
     }
   </style>
+  <link rel="stylesheet" href="profile.css?v=studio-2">
+  <script src="profile-ui.js?v=studio-2" defer></script>
 </head>
-<body>
+<body class="inner-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header>
     <div class="container header-container">
-      <div>
-        <img src="images/logo.png" alt="Peter Njenga Logo" class="logo">
-      </div>
+      <a class="wordmark" href="index.html" aria-label="Peter Njenga home"><img class="head-logo" src="images/logo.png" alt="Peter Njenga" width="40" height="40"><span class="wordmark-caption">PERSONAL PROFILE</span></a>
 
-      <button class="nav-toggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-controls="main-nav" aria-expanded="false">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -511,12 +530,12 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- Resume Hero Section -->
     <section class="resume-hero">
       <div class="container">
-        <h1 class="section-title fade-in">My Resume</h1>
-        <p class="section-subtitle fade-in delay-1">Professional Experience & Education</p>
+        <h1 class="section-title fade-in" data-profile-path="pageCopy.resumeTitle">My Resume</h1>
+        <p class="section-subtitle fade-in delay-1" data-profile-path="pageCopy.resumeSubtitle">Professional Experience & Education</p>
       </div>
     </section>
 
@@ -525,20 +544,20 @@
     <section class="container">
       <div class="resume-summary fade-in delay-2">
         <h2>Hi, I'm Peter Njenga Kihoro.</h2>
-        <p>A Computer Technologist specializing in Project Management, Social Media Management, System Administration, Android Development, Graphic Design, ICT Support, Web Programming, Routing and Networking, and FLP Music Production.</p>
+        <p data-profile="headline">A Computer Technologist specializing in Project Management, Social Media Management, System Administration, Android Development, Graphic Design, ICT Support, Web Programming, Routing and Networking, and FLP Music Production.</p>
         
         <div class="summary-info">
           <div class="info-box">
             <strong>Location:</strong>
-            <span>California, USA</span>
+            <span data-profile="location">California, USA</span>
           </div>
           <div class="info-box">
             <strong>Phone:</strong>
-            <span>(+1)707 978 6179</span>
+            <span data-profile="phone">(+1)707 978 6179</span>
           </div>
           <div class="info-box">
             <strong>Email:</strong>
-            <span>Peter.njengakihoro@gmail.com</span>
+            <span data-profile="email">Peter.njengakihoro@gmail.com</span>
           </div>
         </div>
       </div>
@@ -546,9 +565,9 @@
 
     <section class="container">
       <div class="resume-card fade-in">
-        <h3>Professional Profile</h3>
+        <h3 data-profile-path="pageCopy.professionalProfileTitle">Professional Profile</h3>
         <div class="resume-item">
-          <p>Innovative and deadline-driven Web Developer, Android Developer, Graphic Designer, Video Editor with 3+ years of experience designing and developing user-centered digital/print marketing systems and material from initial concept to final, polished deliverable.</p>
+          <p data-profile="resumeProfile">Innovative and deadline-driven Web Developer, Android Developer, Graphic Designer, Video Editor with 3+ years of experience designing and developing user-centered digital/print marketing systems and material from initial concept to final, polished deliverable.</p>
         </div>
       </div>
     </section>
@@ -556,9 +575,9 @@
     <div class="container">
       <div class="resume-grid">
         <section>
-          <h2 class="section-title fade-in">Education</h2>
+          <h2 class="section-title fade-in" data-profile-path="pageCopy.educationTitle">Education</h2>
           
-          <div class="resume-card fade-in delay-1">
+          <div class="resume-card fade-in delay-1" data-dynamic-education>
             
             <div class="resume-item">
               <h4>Master of Science in Project Management & Planning</h4>
@@ -584,9 +603,9 @@
         </section>
 
         <section>
-          <h2 class="section-title fade-in">Experience</h2>
+          <h2 class="section-title fade-in" data-profile-path="pageCopy.experienceTitle">Experience</h2>
           
-          <div class="resume-card fade-in delay-2">
+          <div class="resume-card fade-in delay-2" data-dynamic-experience>
 
           <div class="resume-item">
               <h4>Mental Health Technician/Worker - MHT/MHW</h4>
@@ -723,10 +742,11 @@
           </svg>
         </a>
       </div>
-      <p class="copyright">&copy; <span id="year"></span> Peter Njenga Kihoro. All rights reserved.</p>
+      <p class="copyright">&copy; <span id="year"></span> <span data-profile="name">Peter Njenga Kihoro</span>. <span data-profile="footerText">All rights reserved.</span></p>
     </div>
   </footer>
 
+  <script src="dynamic-profile.js?v=studio-2"></script>
   <script>
     // Update copyright year
     document.getElementById('year').textContent = new Date().getFullYear();
