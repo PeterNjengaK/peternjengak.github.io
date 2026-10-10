@@ -185,7 +185,7 @@ function renderProjects(projects) {
     const image = document.createElement('img');
     image.className = 'portfolio-img';
     image.src = project.image || 'images/logo.png';
-    image.alt = project.title;
+    image.alt = project.imageAlt || project.title;
     image.loading = 'lazy';
     const overlay = document.createElement('div');
     overlay.className = 'portfolio-overlay';
